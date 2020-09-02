@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <!-- 键盘抬起事件，如果按下的是回车键  出发执行submit方法  .enter .space .delete  .esc 上下左右 -->
+        <input type="text" @keyup.enter="submit" />
+        <input type="text" @keyup.o="submit" />
+        <!-- 18代表得到是alt键的值 按下alt键就会触发该方法 -->
+        <input type="text" @keyup.wcg="submit" />
+    </div>
+    <script src='../vue.js/vue.js'></script>
+    <script>
+        Vue.config.keyCodes.wcg = 18;
+        new Vue({
+            el: '#app',
+            data:{  },
+            methods:{
+submit(){
+    console.log("提交成功");
+}
+            },
+        })
+    </script>
+</body>
+</html>
