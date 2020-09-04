@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        {{bigStr}}
+    </div>
+    <script src='../vue.js/vue.js'></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{ 
+                str: 'english'
+             },
+            methods:{},
+            directives:{},
+            // 计算属性
+            computed: {
+            //形式上是一个函数，最终使用的时候当作属性来使用的
+            bigStr(){
+                return this.str.toUpperCase()
+            }
+        },
+        })
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-model 双向绑定  -  用户需要填写 点击 选择 这些操作使用双向绑定  在表单元素中一般使用双向绑定较多
+    v-bind  属性绑定（单向绑定） 类名  索引  自定义属性 -->
+    <div id='app'>
+        <!-- <input type="text" :value="msg" disabled> -->
+        <input type="text" v-model="inputmsg">{{inputmsg}}
+        <hr>
+        <input type="radio" v-model="sex" value="0">男
+        <input type="radio" v-model="sex" value="1">女 {{sex}}
+        <hr>
+        <!-- 复选框 单个情况  单个复选框，绑定到布尔值 -->
+        <input type="checkbox" v-model="check1"> {{check1}}
+        <hr>
+        <!-- 复选框  多个复选框，绑定到数组： -->
+        <input type="checkbox" v-model="hobby" value="one"> 张的
+        <input type="checkbox" v-model="hobby" value="two"> 竹的
+        <input type="checkbox" v-model="hobby" value="san"> 强的 {{hobby}}
+        <hr>
+        <!-- 下拉列表 选中单个绑定到option项具体的值 -->
+        <select v-model="language">
+            <option value="1">泰语</option>
+            <option value="2">英语</option>
+            <option value="3">日语</option>
+            <option value="4">韩语</option>
+        </select>
+        {{language}}
+        <hr>
+        <select v-model="language2" multiple>
+            <option value="1">泰语</option>
+            <option value="2">英语</option>
+            <option value="3">日语</option>
+            <option value="4">韩语</option>
+        </select>
+        {{language2}}
+    </div>
+    <script src='../vue.js/vue.js'></script>
+    <script>
+    var vm = new Vue({
+            el: '#app',
+            data:{ 
+                inputmsg:'鸟随鸾凤飞腾远',
+                sex:'',
+                check1:false,
+                hobby:['one'],
+                language2:[],
+                language:[],
+             },
+            methods:{},
+        })
+    </script>
+</body>
+</html>

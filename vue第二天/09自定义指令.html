@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-abc />
+    </div>
+    <script src="../vue.js/vue.js"></script>
+    <script>
+      // Vue.directive(指令名，{配置对象})
+      Vue.directive("abc", {
+        // el表示的就是当前使用该指令的dom元素
+        inserted(el) {
+          // console.log(el);
+          el.focus();
+        },
+      });
+      new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

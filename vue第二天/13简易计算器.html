@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 计算属性与方法的区别：计算属性是基于依赖进行缓存的，而方法不缓存 -->
+    <div id='app'>
+        <input type="text" v-model="num1">
+        <input type="text" v-model="num2">
+        <!-- <button @click="calc">计算</button> -->
+        <h5>计算的结果是：{{calc()}}</h5>
+        <h5>计算的结果是：{{calc()}}</h5>
+        <h5>计算的结果是：{{calc()}}</h5>
+        <h5>计算的结果是：{{calc()}}</h5>
+        <h2>{{sum}}</h2>
+        <h2>{{sum}}</h2>
+        <h2>{{sum}}</h2>
+        <h2>{{sum}}</h2>
+        <h2>{{sum}}</h2>
+    </div>
+    <script src='../vue.js/vue.js'></script>
+    <script>
+        // 1.两个输入框，值是用户输入的，将用户输入的值拿到  ----  双向绑定
+        // 2. 运算符  也是用户选择的   ---- 双向绑定
+        // 3. 计算结果
+        //  3.1 为计算按钮绑定点击事件
+        // 3.2 在事件中根据运算符的不同，进行不同加减乘除的操作
+        new Vue({
+            el: '#app',
+            data:{ 
+                num1:1,
+                num2:10,
+             },
+            methods:{
+                // 定义计算的方法
+                calc(){
+                    console.log("方法被执行了");
+                    return parseFloat(this.num1) + parseFloat(this.num2);
+                },
+            },
+            computed: {
+                sum() {
+                    console.log("计算属性被执行了");
+                    return parseFloat(this.num1) + parseFloat(this.num2);
+                }
+            },
+        })
+    </script>
+</body>
+</html>
