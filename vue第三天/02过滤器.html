@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>0
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id='app'>
+        日期是：{{timer | dateformat }}
+        <hr>
+        日期是：{{timer | dateformat | str }}
+    </div>
+    <script src='../vue.js/vue.js'></script>
+    <script>
+        // 将时间戳转换为年月日
+        Vue.filter("dateformat",function(){
+            const date = new Date(val);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${year}-${month}-${day}`;
+        });
+        Vue.filter("str",function(val){
+            console.log(val);
+            return "今天是" + val
+        }) 
+        new Vue({
+            el: '#app',
+            data:{ 
+                timer:159926809326
+             },
+            methods:{},
+        })
+    </script>
+</body>
+</html>
