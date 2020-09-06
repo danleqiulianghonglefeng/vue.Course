@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script src="../vue.js/vue.js"></script>
+		<script>
+			// 组件a
+			const coma = {
+				template: '<div>com-a子组件</div>',
+				data() {
+					return {}
+				},
+				methods: {},
+			}
+			const comb = {
+				template: '<div>com-b子组件</div>',
+			}
+			new Vue({
+				el: '#app',
+				data: {},
+				methods: {},
+				directives: {},
+				filters: {},
+				components: {
+					coma,
+					comb,
+				},
+			})
+		</script>
+	</body>
+</html>

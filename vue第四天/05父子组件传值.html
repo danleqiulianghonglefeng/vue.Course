@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 1. 传递.在子组件使用的位置 通过属性绑定过的方式 -->
+			<com-a :message="msg"></com-a>
+			<com-array-object></com-array-object>
+		</div>
+		<script src="../vue.js/vue.js"></script>
+		<script>
+			const com = {
+				props: ['msg', 'num', 'boo', 'arr', 'obj'],
+				template: `<div>子组件{{msg}}{{typeof num}} {{typeof boo}} {{arr[0]}} {{obj.name}}</div>`,
+			}
+			Vue.component('ComArrayObject', {
+				template: `<div>子组件2 <com :msg="pmsg" :num="180" :boo="pboo" :arr="parr" :obj="pobj"></com></div>`,
+				data() {
+					return {
+						//  字符串的
+						pmsg: '生活不止眼前的枸杞，还有保温杯和霸王洗发水',
+						// 数字
+						// pnum:18,
+						// 布尔值
+						pboo: true,
+						//  数组
+						parr: [234, 266, 273],
+						// 对象
+						pobj: { name: '罗志祥' },
+					}
+				},
+				components: {
+					com,
+				},
+			}),
+				Vue.component('com-a', {
+					//2.接收 在子组件定义的位置 通过 props属性来接收，props值是一个数组
+					props: ['message'],
+					template: `<div>我是子组件 -- {{message}}</div>`,
+					data() {
+						return {}
+					},
+				})
+			// 组件与组件之间的数据是不能直接共享的
+			new Vue({
+				el: '#app',
+				data: {
+					msg: '所有的顺其自然，都是无能为力--来自爸爸的忠告',
+				},
+				methods: {},
+			})
+		</script>
+	</body>
+</html>

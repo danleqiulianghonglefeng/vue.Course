@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>文字</p>
+			<com-a @handle="phandler($event)"></com-a>
+		</div>
+		<script src="../vue.js/vue.js"></script>
+		<script>
+			// 1.在子组件中定义 点击 事件， 在事件中通过$emit('自定义时间名')
+			// 2.在父组件中 定义自定义事件名,
+			// 3.在父组件中定义方法
+			Vue.component('com-a', {
+				// template: `<div>子组件coma <button @click="$emit('handle')">按钮</button> </div>`,
+				template: `<div>子组件coma <button @click="$emit('handle',[smsg,bgc])">按钮</button> </div>`,
+				data() {
+					return {
+						// smsg: '少壮不努力，长大开夏利',
+						smsg: 'green',
+						bgc: 'red',
+					}
+				},
+				methods: {},
+			})
+			new Vue({
+				el: '#app',
+				data: {},
+				methods: {
+					phandler(param) {
+						console.log('父组件的方法')
+						document.querySelector('p').style.color = param[0]
+						document.querySelector('p').style.backgroundColor =
+							param[1]
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

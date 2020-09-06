@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body><wcg></wcg>
+    <div id='app'>
+        <wcg></wcg>
+        <wcg></wcg>
+        <wcg></wcg>
+        <wcg></wcg>
+    </div>
+    <script src='../vue.js/vue.js'></script>
+    <script>
+        // 组件就是封装好的结构样式逻辑代码的一个功能性代码，重用，分治
+        // Vue.component('组件名',{配置对象})
+        // 组件的命名，使用短横线的方式命名组件my-component，在组件使用的时候，<my-component></my-component>
+        Vue.component("my-component",{
+            template:`
+            <div>
+                我是子组件1<MyComponentName></MyComponentName>
+                <my-component-name></my-component-name>
+                </div> `,
+        })
+        Vue.component("wcg",{
+            template:`
+            <strong @click="handler">孔子东游，见两小儿辩日----{{msg}}</strong>
+            `,
+            // 1. 组件的data一定是一个函数，并且返回一个对象
+            // 2. 组件的template必须有且只有一个根节点
+            // 3. template可以使用模板字符串
+            data(){
+                return{
+                    msg:'日初出打入车改'
+                };
+            },
+            methods:{
+                handler(){
+                    console.log(this);
+                    this.msg = "123";
+                }
+            },
+            computed:{},
+            watch: {
+                
+            },
+        })
+        new Vue({
+            el: '#app',
+            data:{  },
+            methods:{},
+        })
+    </script>
+</body>
+</html>
